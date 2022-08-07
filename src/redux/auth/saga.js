@@ -1,3 +1,4 @@
+import api from 'data/api';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { auth } from 'helpers/Firebase';
 import { adminRoot, currentUser } from 'constants/defaultValues';
@@ -23,23 +24,27 @@ import {
 
 export function* watchLoginUser() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(LOGIN_USER, loginWithEmailPassword);
+  yield takeEvery(LOGIN_USER, loginWithUsernamePassword);
 }
 
-const loginWithEmailPasswordAsync = async (email, password) =>
+const loginWithUsernamePasswordAsync = async (username, password) =>
   // eslint-disable-next-line no-return-await
-  await auth
-    .signInWithEmailAndPassword(email, password)
-    .then((user) => user)
+  await api
+    .post('/auth/login.php', { username, password })
+    .then((response) => response.data)
     .catch((error) => error);
 
-function* loginWithEmailPassword({ payload }) {
-  const { email, password } = payload.user;
+function* loginWithUsernamePassword({ payload }) {
+  const { username, password } = payload.user;
   const { history } = payload;
   try {
-    const loginUser = yield call(loginWithEmailPasswordAsync, email, password);
-    if (!loginUser.message) {
-      const item = { uid: loginUser.user.uid, ...currentUser };
+    const loginUser = yield call(
+      loginWithUsernamePasswordAsync,
+      username,
+      password
+    );
+    if (!loginUser.error) {
+      const item = { token: loginUser.data.token, ...currentUser };
       setCurrentUser(item);
       yield put(loginUserSuccess(item));
       history.push(adminRoot);
