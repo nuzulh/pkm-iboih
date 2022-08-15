@@ -25,7 +25,7 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
               id={`toggler${item.id}`}
               className="list-item-heading mb-0 truncate w-40 w-xs-100  mb-1 mt-1"
             >
-              {item.category === 'Pantai' && (
+              {item.category === 'Alam' && (
                 <i
                   style={{ fontSize: '2rem' }}
                   className="mr-2 text-primary iconsminds-palm-tree"
@@ -35,12 +35,6 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
                 <i
                   style={{ fontSize: '2rem' }}
                   className="mr-2 text-primary iconsminds-eifel-tower"
-                />
-              )}
-              {item.category === 'Pulau' && (
-                <i
-                  style={{ fontSize: '2rem' }}
-                  className="mr-2 text-primary iconsminds-yacht"
                 />
               )}
               {item.category === 'Kuliner' && (

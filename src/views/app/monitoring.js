@@ -45,55 +45,55 @@ const Monitoring = ({
           <Separator className="mb-5" />
         </Colxx>
       </Row>
-      <Row>
-        <Colxx lg="12" xl="12">
-          {loading ? (
-            <>
-              <Button
-                outline
-                className="icon-button large ml-1 btn btn-primary"
-                title="Refresh"
-                onClick={() => getWisataListAction()}
-              >
-                <i className="simple-icon-refresh text-light" />
-              </Button>
-              <div className="icon-cards-row d-flex flex-wrap mx-1 my-3">
-                <IconCard
-                  icon="iconsminds-bar-chart-4"
-                  title="semua"
-                  value={visitCounts}
-                />
-                {wisataItems.map((item) => (
-                  <IconCard
-                    key={item.id}
-                    icon={icon[item.category]}
-                    title={item.name}
-                    value={item.visit_count}
+        {loading ? (
+          <Row>
+            <Colxx lg="12" xl="12">
+                <>
+                  <Button
+                    outline
+                    className="icon-button large ml-1 btn btn-primary"
+                    title="Refresh"
+                    onClick={() => getWisataListAction()}
+                  >
+                    <i className="simple-icon-refresh text-light" />
+                  </Button>
+                  <div className="icon-cards-row d-flex flex-wrap mx-1 my-3">
+                    <IconCard
+                      icon="iconsminds-bar-chart-4"
+                      title="semua"
+                      value={visitCounts}
+                    />
+                    {wisataItems.map((item) => (
+                      <IconCard
+                        key={item.id}
+                        icon={icon[item.category]}
+                        title={item.name}
+                        value={item.visit_count}
+                      />
+                    ))}
+                  </div>
+                </>
+            </Colxx>
+            <Colxx lg="6" xl="6">
+              <Card>
+                <CardBody>
+                  <CardTitle>Cuaca saat ini</CardTitle>
+                  <ReactWeather
+                    isLoading={isLoading}
+                    errorMessage={errorMessage}
+                    data={data}
+                    lang="id"
+                    locationLabel="Iboih, Sabang"
+                    unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                    showForecast
                   />
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="loading" />
-          )}
-        </Colxx>
-        <Colxx lg="6" xl="6">
-          <Card>
-            <CardBody>
-              <CardTitle>Cuaca saat ini</CardTitle>
-              <ReactWeather
-                isLoading={isLoading}
-                errorMessage={errorMessage}
-                data={data}
-                lang="id"
-                locationLabel="Iboih, Sabang"
-                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
-                showForecast
-              />
-            </CardBody>
-          </Card>
-        </Colxx>
-      </Row>
+                </CardBody>
+              </Card>
+            </Colxx>
+          </Row>
+        ) : (
+          <div className="loading" />
+        )}
     </>
   );
 };

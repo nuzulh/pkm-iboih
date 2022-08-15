@@ -375,7 +375,6 @@ const mapStateToProps = ({ wisataApp }) => {
     icon,
     error,
   } = wisataApp;
-  console.log(wisataApp);
   return {
     wisataItems,
     searchKeyword,

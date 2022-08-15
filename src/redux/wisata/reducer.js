@@ -21,11 +21,9 @@ import {
   WISATA_GET_VISITS_ERROR,
 } from '../actions';
 
-const colors = ThemeColors();
-
 const INIT_STATE = {
-  allWisataItems: null,
-  wisataItems: null,
+  allWisataItems: [],
+  wisataItems: [],
   visitCounts: null,
   visitItems: null,
   chartData: null,
@@ -33,7 +31,7 @@ const INIT_STATE = {
   filter: null,
   searchKeyword: '',
   orderColumn: null,
-  categories: ['Pantai', 'Monumen', 'Pulau', 'Kuliner'],
+  categories: ['Alam', 'Monumen', 'Kuliner'],
   loading: false,
   orderColumns: [
     { column: 'name', label: 'Nama' },
@@ -41,9 +39,8 @@ const INIT_STATE = {
     { column: 'visit_count', label: 'Pengunjung' },
   ],
   icon: {
-    Pantai: 'iconsminds-palm-tree',
+    Alam: 'iconsminds-palm-tree',
     Monumen: 'iconsminds-eifel-tower',
-    Pulau: 'iconsminds-yacht',
     Kuliner: 'iconsminds-cocktail',
   },
   selectedItems: [],
