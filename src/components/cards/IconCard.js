@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 
-const IconCard = ({ className = 'mb-4 mr-3', icon, title, value }) => {
+const IconCard = ({ className = 'mb-3 mr-3', icon, title, value }) => {
   return (
     <div className={`icon-row-item ${className}`} style={{ minWidth: '10rem' }}>
       <Card>

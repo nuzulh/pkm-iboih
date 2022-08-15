@@ -72,6 +72,23 @@ export const SURVEY_GET_DETAILS_ERROR = 'SURVEY_GET_DETAILS_ERROR';
 export const SURVEY_DELETE_QUESTION = 'SURVEY_DELETE_QUESTION';
 export const SURVEY_SAVE = 'SURVEY_SAVE';
 
+export const WISATA_GET_LIST = 'WISATA_GET_LIST';
+export const WISATA_GET_LIST_SUCCESS = 'WISATA_GET_LIST_SUCCESS';
+export const WISATA_GET_LIST_ERROR = 'WISATA_GET_LIST_ERROR';
+export const WISATA_ADD_ITEM = 'WISATA_ADD_ITEM';
+export const WISATA_ADD_ITEM_SUCCESS = 'WISATA_ADD_ITEM_SUCCESS';
+export const WISATA_ADD_ITEM_ERROR = 'WISATA_ADD_ITEM_ERROR';
+export const WISATA_GET_LIST_WITH_FILTER = 'WISATA_GET_LIST_WITH_FILTER';
+export const WISATA_GET_LIST_WITH_ORDER = 'WISATA_GET_LIST_WITH_ORDER';
+export const WISATA_GET_LIST_SEARCH = 'WISATA_GET_LIST_SEARCH';
+export const WISATA_SELECTED_ITEMS_CHANGE = 'WISATA_SELECTED_ITEMS_CHANGE';
+export const WISATA_EDIT_ITEM = 'WISATA_EDIT_ITEM';
+export const WISATA_EDIT_ITEM_SUCCESS = 'WISATA_EDIT_ITEM_SUCCESS';
+export const WISATA_EDIT_ITEM_ERROR = 'WISATA_EDIT_ITEM_ERROR';
+export const WISATA_GET_VISITS = 'WISATA_GET_VISITS';
+export const WISATA_GET_VISITS_SUCCESS = 'WISATA_GET_VISITS_SUCCESS';
+export const WISATA_GET_VISITS_ERROR = 'WISATA_GET_VISITS_ERROR';
+
 export * from './menu/actions';
 export * from './settings/actions';
 export * from './auth/actions';
@@ -79,3 +96,4 @@ export * from './todo/actions';
 export * from './chat/actions';
 export * from './surveyList/actions';
 export * from './surveyDetail/actions';
+export * from './wisata/actions';

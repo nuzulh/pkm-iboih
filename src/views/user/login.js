@@ -77,6 +77,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                     <IntlMessages id="user.forgot-password-question" />
                   </NavLink>
                   <Button
+                    type="submit"
                     color="primary"
                     className={`btn-shadow btn-multiple-state ${
                       loading ? 'show-spinner' : ''
