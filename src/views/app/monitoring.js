@@ -49,14 +49,15 @@ const Monitoring = ({
           <Row>
             <Colxx lg="12" xl="12">
                 <>
+                <div className="justify-content-end d-flex">
                   <Button
-                    outline
-                    className="icon-button large ml-1 btn btn-primary"
+                    className="icon-button large btn btn-primary"
                     title="Refresh"
                     onClick={() => getWisataListAction()}
                   >
                     <i className="simple-icon-refresh text-light" />
                   </Button>
+                </div>
                   <div className="icon-cards-row d-flex flex-wrap mx-1 my-3">
                     <IconCard
                       icon="iconsminds-bar-chart-4"

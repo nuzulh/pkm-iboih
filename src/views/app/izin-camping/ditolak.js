@@ -2,9 +2,14 @@ import React, { useEffect } from 'react';
 import { Button, Row } from 'reactstrap';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
-import { getCampingList, changeCampingStatus } from 'redux/actions';
+import {
+  getCampingList,
+  changeCampingStatus,
+  getCampingSearch,
+} from 'redux/actions';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
+import CampingListItem from 'components/applications/CampingListItem';
 
 const Ditolak = ({
   match,
@@ -16,6 +21,7 @@ const Ditolak = ({
   selectedItems,
   getCampingListAction,
   changeCampingStatusAction,
+  getCampingSearchAction,
 }) => {
   useEffect(() => {
     getCampingListAction();
@@ -25,22 +31,35 @@ const Ditolak = ({
     <>
       <Row>
         <Colxx xxs="12">
-          <Breadcrumb heading="menu.diterima" match={match} />
+          <Breadcrumb heading="menu.ditolak" match={match} />
           <Separator className="mb-5" />
         </Colxx>
       </Row>
       <Row>
-        <Colxx xxs="12" className="mb-4">
+        <Colxx className="mb-4">
+          <div className="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+            <input
+              type="text"
+              name="keyword"
+              id="search"
+              placeholder="Cari..."
+              defaultValue={searchKeyword}
+              onChange={(e) => {
+                getCampingSearchAction(e.target.value);
+              }}
+            />
+          </div>
+        </Colxx>
+        <Colxx xxs="12" className="mb-4 p-0">
           {loading ? (
             campingItems
-              .filter((x) => x.status === 2)
+              .filter((x) => x.status === 'rejected')
               .map((item) => (
-                <section key={item.id}>
-                  <span>{item.name}</span>
-                  <span>{item.pj_name}</span>
-                  <span>{item.email}</span>
-                  <span>{item.status}</span>
-                </section>
+                <CampingListItem
+                  key={item.id}
+                  item={item}
+                  changeStatusAction={changeCampingStatusAction}
+                />
               ))
           ) : (
             <div className="loading" />
@@ -60,7 +79,6 @@ const mapStateToProps = ({ campingApp }) => {
     orderColumns,
     selectedItems,
   } = campingApp;
-  console.log(campingApp);
   return {
     campingItems,
     searchKeyword,
@@ -74,5 +92,6 @@ export default injectIntl(
   connect(mapStateToProps, {
     getCampingListAction: getCampingList,
     changeCampingStatusAction: changeCampingStatus,
+    getCampingSearchAction: getCampingSearch,
   })(Ditolak)
 );

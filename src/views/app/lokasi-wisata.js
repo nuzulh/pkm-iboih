@@ -299,10 +299,8 @@ const LokasiWisata = ({
                     id="search"
                     placeholder="Cari..."
                     defaultValue={searchKeyword}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        getWisataSearchAction(e.target.value);
-                      }
+                    onChange={(e) => {
+                      getWisataSearchAction(e.target.value);
                     }}
                   />
                 </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Card, CardBody, Badge, CustomInput, Button } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
 import { Colxx } from '../common/CustomBootstrap';
 
 const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
@@ -19,12 +18,7 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
       <Card className="card d-flex mb-3">
         <div className="d-flex flex-grow-1 min-width-zero">
           <CardBody className="align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <NavLink
-              to="#"
-              location={{}}
-              id={`toggler${item.id}`}
-              className="list-item-heading mb-0 truncate w-40 w-xs-100  mb-1 mt-1"
-            >
+            <div className="list-item-heading mb-0 truncate w-40 w-xs-100 mb-1 mt-1 align-items-center d-flex">
               {item.category === 'Alam' && (
                 <i
                   style={{ fontSize: '2rem' }}
@@ -44,7 +38,7 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
                 />
               )}
               <span className="align-middle d-inline-block">{item.name}</span>
-            </NavLink>
+            </div>
             <p className="mb-1 text-muted text-small w-15 w-xs-100">
               {item.category}
             </p>
