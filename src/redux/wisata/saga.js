@@ -21,7 +21,6 @@ import {
 
 const getWisataListRequest = async () => {
   const user = getCurrentUser();
-  // eslint-disable-next-line no-return-await
   return await api
     .get('service/site.php', {
       headers: {
@@ -99,7 +98,6 @@ function* editWisataItem({ payload }) {
 
 const getWisataVisitsRequest = async () => {
   const user = getCurrentUser();
-  // eslint-disable-next-line no-return-await
   return await api
     .get('service/visit.php', {
       headers: {

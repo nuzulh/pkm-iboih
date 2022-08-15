@@ -89,6 +89,16 @@ export const WISATA_GET_VISITS = 'WISATA_GET_VISITS';
 export const WISATA_GET_VISITS_SUCCESS = 'WISATA_GET_VISITS_SUCCESS';
 export const WISATA_GET_VISITS_ERROR = 'WISATA_GET_VISITS_ERROR';
 
+export const CAMPING_GET_LIST = 'CAMPING_GET_LIST';
+export const CAMPING_GET_LIST_SUCCESS = 'CAMPING_GET_LIST_SUCCESS';
+export const CAMPING_GET_LIST_ERROR = 'CAMPING_GET_LIST_ERROR';
+export const CAMPING_GET_LIST_WITH_FILTER = 'CAMPING_GET_LIST_WITH_FILTER';
+export const CAMPING_GET_LIST_WITH_ORDER = 'CAMPING_GET_LIST_WITH_ORDER';
+export const CAMPING_GET_LIST_SEARCH = 'CAMPING_GET_LIST_SEARCH';
+export const CAMPING_CHANGE_STATUS = 'CAMPING_CHANGE_STATUS';
+export const CAMPING_CHANGE_STATUS_SUCCESS = 'CAMPING_CHANGE_STATUS_SUCCESS';
+export const CAMPING_CHANGE_STATUS_ERROR = 'CAMPING_CHANGE_STATUS_ERROR';
+
 export * from './menu/actions';
 export * from './settings/actions';
 export * from './auth/actions';
@@ -97,3 +107,4 @@ export * from './chat/actions';
 export * from './surveyList/actions';
 export * from './surveyDetail/actions';
 export * from './wisata/actions';
+export * from './izinCamping/actions';

@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-case-declarations */
-import { ThemeColors } from 'helpers/ThemeColors';
 import {
   WISATA_GET_LIST,
   WISATA_GET_LIST_SUCCESS,
