@@ -62,6 +62,7 @@ module.exports = {
   'wisata.link': 'Link artikel',
   'wisata.submit': 'Submit',
   'wisata.cancel': 'Batal',
+  'menu.feedback': 'Feedback',
 
   /* 04.Error Page */
   'pages.error-title': 'Ooops... looks like an error occurred!',

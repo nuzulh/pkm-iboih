@@ -7,6 +7,7 @@ import AppLayout from 'layout/AppLayout';
 const Monitoring = React.lazy(() => import('./monitoring'));
 const IzinCamping = React.lazy(() => import('./izin-camping'));
 const LokasiWisata = React.lazy(() => import('./lokasi-wisata'));
+const Feedback = React.lazy(() => import('./feedback'));
 
 const App = ({ match }) => {
   return (
@@ -30,6 +31,10 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/lokasi-wisata`}
               render={(props) => <LokasiWisata {...props} />}
+            />
+            <Route
+              path={`${match.url}/feedback`}
+              render={(props) => <Feedback {...props} />}
             />
             <Redirect to="/error" />
           </Switch>

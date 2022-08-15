@@ -39,5 +39,11 @@ const data = [
       },
     ],
   },
+  {
+    id: 'feedback',
+    icon: 'simple-icon-star',
+    label: 'menu.feedback',
+    to: `${adminRoot}/feedback`,
+  },
 ];
 export default data;
