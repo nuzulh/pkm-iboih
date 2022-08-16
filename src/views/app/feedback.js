@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
+import FeedbackListItem from 'components/applications/FeedbackListItem';
+import api from 'data/api';
+import { getCurrentUser } from 'helpers/Utils';
 
 const Feedback = ({ match }) => {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const user = getCurrentUser();
+    await api
+      .get('service/feedback.php', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      })
+      .then((response) => {
+        if (!response.error && response.data.data !== null) {
+          setData(response.data.data);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <Row>
@@ -14,11 +39,9 @@ const Feedback = ({ match }) => {
         </Colxx>
       </Row>
       <Row>
-        <Colxx xxs="12" className="mb-4">
-          <p>
-            <IntlMessages id="menu.feedback" />
-          </p>
-        </Colxx>
+        {data.map((item) => (
+          <FeedbackListItem key={item.id} item={item} />
+        ))}
       </Row>
     </>
   );
