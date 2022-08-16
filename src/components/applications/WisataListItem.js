@@ -10,7 +10,7 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
     `https://api.visitiboih.com/app.php?visit=${siteId}&link=${articleUrl}`
   );
   const [qrUrl] = useState(
-    `${baseUrl}?data=${encodeURIComponent(countUrl)}!&size=400x400`
+    `${baseUrl}?data=${encodeURIComponent(countUrl)}&size=400x400`
   );
 
   return (
@@ -43,7 +43,7 @@ const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
               {item.category}
             </p>
             <p className="mb-1 text-muted text-small w-30 w-xs-100">
-              https://visitiboih.com/{item.link}
+              {item.link}
             </p>
             <div className="w-25 w-xs-100">
               {

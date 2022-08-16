@@ -94,15 +94,20 @@ const AddWisataModal = ({
           <IntlMessages id="wisata.link" />
         </Label>
         <InputGroup className="mb-3">
-          <InputGroupAddon addonType="prepend">
-            https://visitiboih.com/
-          </InputGroupAddon>
+          <InputGroupAddon addonType="prepend">https://</InputGroupAddon>
           <Input
             type="text"
             defaultValue={state.link}
-            onChange={(event) =>
-              setState({ ...state, link: event.target.value })
-            }
+            onChange={(event) => {
+              if (
+                event.target.value.includes('https://') ||
+                event.target.value.includes('http://')
+              ) {
+                setState({ ...state, link: event.target.value });
+              } else {
+                setState({ ...state, link: `https://${event.target.value}` });
+              }
+            }}
           />
         </InputGroup>
       </ModalBody>
