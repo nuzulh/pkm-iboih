@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import {
@@ -16,9 +16,6 @@ const Tertunda = ({
   campingItems,
   loading,
   searchKeyword,
-  orderColumn,
-  orderColumns,
-  selectedItems,
   getCampingListAction,
   getCampingSearchAction,
   changeCampingStatusAction,

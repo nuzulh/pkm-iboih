@@ -37,6 +37,34 @@ function* getCampingList() {
 
 const changeCampingStatusRequest = async (item) => {
   const user = getCurrentUser();
+
+  if (item.status === 'approved') {
+    const mailData = {
+      service_id: 'service_kgyjf7q',
+      template_id: 'template_mq5u0c6',
+      user_id: 'FW55-r_KI9Z-bp9tm',
+      template_params: {
+        name: item.name,
+        pj_name: item.pj_name,
+        place: item.place,
+        inserted_at: item.inserted_at,
+        identity_number: item.identity_number,
+        email: item.email,
+        status: 'DITERIMA',
+      },
+    };
+
+    await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(mailData),
+    })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+  }
+
   return await api
     .patch(
       `service/camp.php?id=${item.id}`,

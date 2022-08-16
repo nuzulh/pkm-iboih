@@ -52,6 +52,9 @@ const CampingListItem = ({ item, changeStatusAction }) => {
             <p className="mb-1 text-muted text-small w-15 w-xs-100">
               {item.email}
             </p>
+            <p className="mb-1 text-muted text-small w-15 w-xs-100">
+              {item.place}
+            </p>
             <p className="mb-1 text-muted text-small w-10 w-xs-100">
               {item.inserted_at.split('-').reverse().join('-')}
             </p>
@@ -102,7 +105,12 @@ const CampingListItem = ({ item, changeStatusAction }) => {
           <li>Nama: {item.name}</li>
           <li>Penanggung Jawab: {item.pj_name}</li>
           <li>No. Identitas: {item.identity_number}</li>
-          <li>email: {item.email}</li>
+          <li>Lokasi Wisata: {item.place}</li>
+          <br />
+          <p>
+            Hasil permintaan izin akan dikirimkan ke email
+            <strong> {item.email}</strong>
+          </p>
         </ModalBody>
         <ModalFooter>
           <Button
@@ -118,6 +126,12 @@ const CampingListItem = ({ item, changeStatusAction }) => {
                 id: item.id,
                 status: 'approved',
                 reject_reason: '',
+                name: item.name,
+                pj_name: item.pj_name,
+                place: item.place,
+                identity_number: item.identity_number,
+                inserted_at: item.inserted_at,
+                email: item.email,
               })
             }
           >
@@ -133,7 +147,7 @@ const CampingListItem = ({ item, changeStatusAction }) => {
           <li>Nama: {item.name}</li>
           <li>Penanggung Jawab: {item.pj_name}</li>
           <li>No. Identitas: {item.identity_number}</li>
-          <li>email: {item.email}</li>
+          <li>Lokasi Wisata: {item.place}</li>
           <p className="mt-2">Silahkan memasukkan alasan penolakan: </p>
           <Input
             type="textarea"
@@ -152,6 +166,12 @@ const CampingListItem = ({ item, changeStatusAction }) => {
                 id: item.id,
                 status: 'rejected',
                 reject_reason: reason,
+                name: item.name,
+                pj_name: item.pj_name,
+                place: item.place,
+                identity_number: item.identity_number,
+                inserted_at: item.inserted_at,
+                email: item.email,
               })
             }
           >
