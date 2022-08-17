@@ -34,6 +34,14 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loading: false };
 
     case CAMPING_GET_LIST_SUCCESS:
+      if (action.payload === null) {
+        return {
+          ...state,
+          allCampingItems: [],
+          campingItems: [],
+          loading: true,
+        };
+      }
       return {
         ...state,
         allCampingItems: action.payload,

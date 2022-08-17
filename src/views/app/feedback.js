@@ -42,9 +42,9 @@ const Feedback = ({ match }) => {
       })
       .then((response) => {
         if (!response.error && response.data.data !== null) {
-          setLoading(false);
           setData(response.data.data);
         }
+        setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
@@ -85,6 +85,7 @@ const Feedback = ({ match }) => {
               ''
             );
             setSelectedItems([]);
+            setData([]);
             getData();
           }
         })
