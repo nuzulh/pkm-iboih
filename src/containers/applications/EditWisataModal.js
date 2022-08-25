@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
   Button,
@@ -37,10 +37,10 @@ const EditWisataModal = ({
   toggleModal,
   selectedItems,
   categories,
-  loading,
   editWisataItemAction,
   getWisataListAction,
   selectedWisataItemsChangeAction,
+  wisataItems,
 }) => {
   const [state, setState] = useState(initialState);
 
@@ -82,7 +82,9 @@ const EditWisataModal = ({
         </Label>
         <Input
           type="text"
-          defaultValue={state.name}
+          defaultValue={wisataItems
+            .filter((x) => x.id === selectedItems[0])
+            .map((i) => i.name)}
           onChange={(event) => setState({ ...state, name: event.target.value })}
         />
         <Label className="mt-4">
@@ -96,22 +98,44 @@ const EditWisataModal = ({
           options={categories.map((x, i) => {
             return { label: x, value: x, key: i };
           })}
-          value={state.category}
+          defaultValue={{
+            label: wisataItems
+              .filter((x) => x.id === selectedItems[0])
+              .map((i) => i.category),
+            value: wisataItems
+              .filter((x) => x.id === selectedItems[0])
+              .map((i) => i.category),
+            key: categories.indexOf(
+              wisataItems
+                .filter((x) => x.id === selectedItems[0])
+                .map((i) => i.category)
+            ),
+          }}
           onChange={(val) => setState({ ...state, category: val })}
         />
         <Label className="mt-4">
           <IntlMessages id="wisata.link" />
         </Label>
         <InputGroup className="mb-3">
-          <InputGroupAddon addonType="prepend">
-            https://visitiboih.com/
-          </InputGroupAddon>
+          <InputGroupAddon addonType="prepend">https://</InputGroupAddon>
           <Input
             type="text"
-            defaultValue={state.link}
-            onChange={(event) =>
-              setState({ ...state, link: event.target.value })
-            }
+            defaultValue={wisataItems
+              .filter((x) => x.id === selectedItems[0])
+              .map((i) => i.link)}
+            onChange={(event) => {
+              if (
+                event.target.value.includes('https://') ||
+                event.target.value.includes('http://')
+              ) {
+                setState({ ...state, link: event.target.value });
+              } else {
+                setState({
+                  ...state,
+                  link: `https://${event.target.value}`,
+                });
+              }
+            }}
           />
         </InputGroup>
       </ModalBody>

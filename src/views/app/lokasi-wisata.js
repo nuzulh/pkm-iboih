@@ -28,10 +28,10 @@ import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import WisataListItem from 'components/applications/WisataListItem';
 import AddWisataModal from 'containers/applications/AddWisataModal';
+import EditWisataModal from 'containers/applications/EditWisataModal';
 import api from 'data/api';
 import { getCurrentUser } from 'helpers/Utils';
 import { NotificationManager } from 'components/common/react-notifications';
-import EditWisataModal from 'containers/applications/EditWisataModal';
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -325,14 +325,19 @@ const LokasiWisata = ({
           </Row>
         </Colxx>
       </Row>
-      <AddWisataModal
-        toggleModal={() => setModalOpen(!modalOpen)}
-        modalOpen={modalOpen}
-      />
-      <EditWisataModal
-        toggleModal={() => setEditModalOpen(!editModalOpen)}
-        modalOpen={editModalOpen}
-      />
+      {loading && (
+        <>
+          <AddWisataModal
+            toggleModal={() => setModalOpen(!modalOpen)}
+            modalOpen={modalOpen}
+          />
+          <EditWisataModal
+            toggleModal={() => setEditModalOpen(!editModalOpen)}
+            modalOpen={editModalOpen}
+            prevItem={wisataItems.filter((x) => x.id === 23)}
+          />
+        </>
+      )}
       <Modal isOpen={deleteModalOpen}>
         <ModalHeader toggle={() => setDeleteModalOpen(!deleteModalOpen)}>
           Hapus lokasi wisata

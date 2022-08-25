@@ -5,9 +5,8 @@ import { Colxx } from '../common/CustomBootstrap';
 const WisataListItem = ({ item, handleCheckChange, isSelected }) => {
   const [baseUrl] = useState('https://api.qrserver.com/v1/create-qr-code/');
   const [siteId] = useState(item.id);
-  const [articleUrl] = useState(item.link);
   const [countUrl] = useState(
-    `https://api.visitiboih.com/app.php?visit=${siteId}&link=${articleUrl}`
+    `https://api.visitiboih.com/app.php?site_id=${siteId}`
   );
   const [qrUrl] = useState(
     `${baseUrl}?data=${encodeURIComponent(countUrl)}&size=400x400`
